@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>FitAI Coach</title>
 
   <style>
@@ -27,7 +29,7 @@
     }
 
     header {
-      padding: 24px 20px;
+      padding: 25px 20px;
       background: linear-gradient(135deg, #123c27, #102018);
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
@@ -64,6 +66,7 @@
     .welcome p {
       color: #9ca9a2;
       font-size: 14px;
+      line-height: 1.5;
     }
 
     .card {
@@ -82,7 +85,8 @@
       font-weight: bold;
     }
 
-    input, select {
+    input,
+    select {
       width: 100%;
       padding: 13px;
       border-radius: 12px;
@@ -93,7 +97,8 @@
       margin-bottom: 15px;
     }
 
-    input:focus, select:focus {
+    input:focus,
+    select:focus {
       border-color: #39e58c;
     }
 
@@ -146,4 +151,436 @@
     }
 
     .workout {
-      display: flex
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #18201b;
+      border: 1px solid #26332b;
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+    }
+
+    .exercise-name {
+      font-weight: bold;
+    }
+
+    .exercise-info {
+      color: #9ca9a2;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .icon {
+      font-size: 25px;
+    }
+
+    .tip {
+      color: #c7d4cc;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .coach-box {
+      background: #18201b;
+      border: 1px solid #26332b;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 15px;
+    }
+
+    .coach-box p {
+      color: #aebbb3;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: #39e58c;
+      border: 1px solid #39e58c;
+      margin-top: 12px;
+    }
+
+    .notice {
+      font-size: 12px;
+      color: #8f9c94;
+      line-height: 1.5;
+      margin-top: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #203b2b;
+      color: #39e58c;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #657169;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header>
+      <div class="logo">FitAI <span>Coach</span></div>
+      <div class="tagline">
+        Your personal fitness & wellness companion
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- PROFILE SCREEN -->
+      <section id="profileScreen">
+
+        <div class="welcome">
+          <h1>Let's build your plan 💪</h1>
+          <p>
+            Tell us a little about yourself and we'll create a simple
+            fitness routine for you.
+          </p>
+        </div>
+
+        <div class="card">
+
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+          >
+
+          <div class="grid">
+
+            <div>
+              <label for="age">Age</label>
+              <input
+                type="number"
+                id="age"
+                placeholder="Age"
+                min="13"
+                max="100"
+              >
+            </div>
+
+            <div>
+              <label for="level">Fitness Level</label>
+              <select id="level">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+
+          </div>
+
+          <label for="goal">Main Goal</label>
+
+          <select id="goal">
+            <option value="General Fitness">General Fitness</option>
+            <option value="Strength">Strength</option>
+            <option value="Muscle Development">
+              Muscle Development
+            </option>
+            <option value="Endurance">Endurance</option>
+            <option value="Mobility & Flexibility">
+              Mobility & Flexibility
+            </option>
+            <option value="Sports Conditioning">
+              Sports Conditioning
+            </option>
+          </select>
+
+          <label for="location">Where do you exercise?</label>
+
+          <select id="location">
+            <option value="Home">Home</option>
+            <option value="Gym">Gym</option>
+            <option value="Outdoor">Outdoor</option>
+          </select>
+
+          <label for="time">Available Time</label>
+
+          <select id="time">
+            <option value="15–20 minutes">
+              15–20 minutes
+            </option>
+
+            <option value="20–30 minutes">
+              20–30 minutes
+            </option>
+
+            <option value="30–45 minutes">
+              30–45 minutes
+            </option>
+
+            <option value="45–60 minutes">
+              45–60 minutes
+            </option>
+          </select>
+
+          <label for="food">Food Preference</label>
+
+          <select id="food">
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Eggetarian">Eggetarian</option>
+            <option value="Non-Vegetarian">
+              Non-Vegetarian
+            </option>
+            <option value="Vegan">Vegan</option>
+          </select>
+
+          <button onclick="generatePlan()">
+            Create My Plan →
+          </button>
+
+          <p class="notice">
+            FitAI provides general fitness and wellness information.
+            It does not diagnose medical conditions. If you have pain,
+            an injury, or a health condition, talk to a qualified
+            healthcare professional.
+          </p>
+
+        </div>
+
+      </section>
+
+
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="dashboard">
+
+        <div class="hero">
+
+          <h2>
+            Hey <span id="userName">there</span> 👋
+          </h2>
+
+          <p>
+            Your personalized starter plan is ready.
+            Focus on consistency, good technique and recovery.
+          </p>
+
+          <div class="badge" id="goalBadge">
+            General Fitness
+          </div>
+
+        </div>
+
+
+        <h2 class="section-title">
+          🏋️ Today's Workout
+        </h2>
+
+        <div class="workout">
+          <div>
+            <div class="exercise-name">
+              Warm-up
+            </div>
+
+            <div class="exercise-info">
+              5 minutes • Easy movement
+            </div>
+          </div>
+
+          <div class="icon">🔥</div>
+        </div>
+
+
+        <div class="workout">
+          <div>
+            <div class="exercise-name">
+              Bodyweight Squats
+            </div>
+
+            <div class="exercise-info">
+              2–3 comfortable sets
+            </div>
+          </div>
+
+          <div class="icon">🦵</div>
+        </div>
+
+
+        <div class="workout">
+          <div>
+            <div class="exercise-name">
+              Push-ups
+            </div>
+
+            <div class="exercise-info">
+              Use an easier variation if needed
+            </div>
+          </div>
+
+          <div class="icon">💪</div>
+        </div>
+
+
+        <div class="workout">
+          <div>
+            <div class="exercise-name">
+              Plank
+            </div>
+
+            <div class="exercise-info">
+              Comfortable controlled hold
+            </div>
+          </div>
+
+          <div class="icon">🧘</div>
+        </div>
+
+
+        <div class="workout">
+          <div>
+            <div class="exercise-name">
+              Cool-down
+            </div>
+
+            <div class="exercise-info">
+              5 minutes • Gentle stretching
+            </div>
+          </div>
+
+          <div class="icon">🌿</div>
+        </div>
+
+
+        <h2 class="section-title">
+          🥗 Nutrition Guidance
+        </h2>
+
+        <div class="card">
+
+          <p class="tip">
+            • Eat regular balanced meals.<br><br>
+
+            • Include protein-rich foods such as dal, beans,
+            milk/curd, eggs or other suitable foods.<br><br>
+
+            • Add fruits and vegetables regularly.<br><br>
+
+            • Drink water throughout the day.<br><br>
+
+            • Avoid skipping meals just to change your body quickly.
+          </p>
+
+        </div>
+
+
+        <h2 class="section-title">
+          🤖 AI Coach
+        </h2>
+
+        <div class="coach-box">
+
+          <p>
+            Your AI Coach will eventually be able to answer fitness
+            questions, explain exercises, adjust routines and help
+            you understand your progress.
+          </p>
+
+          <button onclick="coachMessage()">
+            Ask AI Coach
+          </button>
+
+          <button
+            class="secondary-btn"
+            onclick="resetApp()"
+          >
+            ← Edit My Profile
+          </button>
+
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <footer>
+      FitAI Coach • Fitness & Wellness
+    </footer>
+
+  </div>
+
+
+  <script>
+
+    function generatePlan() {
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const age =
+        document.getElementById("age").value;
+
+      const goal =
+        document.getElementById("goal").value;
+
+      if (name === "") {
+        alert("Please enter your name.");
+        return;
+      }
+
+      if (age === "") {
+        alert("Please enter your age.");
+        return;
+      }
+
+      document.getElementById("userName").textContent = name;
+
+      document.getElementById("goalBadge").textContent = goal;
+
+      document.getElementById("profileScreen").style.display =
+        "none";
+
+      document.getElementById("dashboard").style.display =
+        "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+
+    function resetApp() {
+
+      document.getElementById("dashboard").style.display =
+        "none";
+
+      document.getElementById("profileScreen").style.display =
+        "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+
+    function coachMessage() {
+
+      alert(
+        "AI Coach is coming next! We will connect a real AI assistant here."
+      );
+
+    }
+
+  </script>
+
+</body>
+            </html>
