@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitAI Coach</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0f0d;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .app {
+      max-width: 480px;
+      margin: auto;
+      min-height: 100vh;
+      background: #111714;
+    }
+
+    header {
+      padding: 24px 20px;
+      background: linear-gradient(135deg, #123c27, #102018);
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #39e58c;
+    }
+
+    .tagline {
+      margin-top: 8px;
+      color: #b7c5bd;
+      font-size: 14px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .welcome {
+      margin-bottom: 20px;
+    }
+
+    .welcome h1 {
+      font-size: 25px;
+      margin-bottom: 7px;
+    }
+
+    .welcome p {
+      color: #9ca9a2;
+      font-size: 14px;
+    }
+
+    .card {
+      background: #18201b;
+      border: 1px solid #26332b;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      color: #dce7e0;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 13px;
+      border-radius: 12px;
+      border: 1px solid #35443a;
+      background: #0e1410;
+      color: white;
+      outline: none;
+      margin-bottom: 15px;
+    }
+
+    input:focus, select:focus {
+      border-color: #39e58c;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 13px;
+      background: #39e58c;
+      color: #07130c;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .dashboard {
+      display: none;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #174e32, #10271b);
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #c3d2c9;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .section-title {
+      font-size: 19px;
+      margin: 20px 0 12px;
+    }
+
+    .workout {
+      display: flex
