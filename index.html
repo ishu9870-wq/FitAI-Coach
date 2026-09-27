@@ -273,6 +273,34 @@ footer {
   color: #657169;
   font-size: 12px;
 }
+.exercise-details {
+  display: none;
+  background: #101712;
+  border: 1px solid #39e58c;
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+.exercise-details h3 {
+  color: #39e58c;
+  margin-bottom: 10px;
+}
+
+.exercise-details p {
+  color: #c7d4cc;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.plan-exercise {
+  cursor: pointer;
+}
+
+.plan-exercise:active {
+  transform: scale(.99);
+    }
 </style>
 </head>
 
@@ -450,7 +478,7 @@ footer {
 
 
   <div id="dayContent" class="day-card">
-
+    
     <h3>Day 1 — Full Body</h3>
 
     <p>
@@ -477,12 +505,13 @@ footer {
       <span>Controlled comfortable hold</span>
     </div>
 
-    <div class="plan-exercise">
+    <div class="plan-exercise" onclick="showExercise('${exercise[0].replace(/^[^a-zA-Z]+/, '')}')">
       <strong>🌿 Cool-down</strong>
       <span>5 minutes • Gentle stretching</span>
     </div>
 
   </div>
+  <div id="exerciseDetails" class="exercise-details"></div>
 
 
   <!-- TODAY'S QUICK WORKOUT -->
@@ -796,6 +825,98 @@ function resetApp() {
   });
 
 }
+
+function showExercise(name) {
+
+  const details = document.getElementById("exerciseDetails");
+
+  const exercises = {
+
+    "Bodyweight Squats": {
+      title: "🦵 Bodyweight Squats",
+      how: "Feet comfortable distance par rakho, hips ko peeche le jaate hue slowly neeche jao, phir controlled way se khade ho.",
+      sets: "Beginner: comfortable sets",
+      rest: "Sets ke beech comfortable rest lo.",
+      mistakes: "Knees ko control me rakho aur movement ko jaldi-jaldi mat karo.",
+      easier: "Chair Squat"
+    },
+
+    "Push-ups": {
+      title: "💪 Push-ups",
+      how: "Hands ko comfortable position me rakho, body ko controlled way se neeche lao aur phir push karo.",
+      sets: "Comfortable repetitions",
+      rest: "Sets ke beech rest lo.",
+      mistakes: "Body ko control ke bina neeche mat girao.",
+      easier: "Wall Push-ups ya Incline Push-ups"
+    },
+
+    "Plank": {
+      title: "🧘 Plank",
+      how: "Body ko comfortable straight position me rakho aur core ko gently engaged rakho.",
+      sets: "Short, controlled holds",
+      rest: "Har hold ke baad rest lo.",
+      mistakes: "Breath hold mat karo aur uncomfortable position me force mat karo.",
+      easier: "Knee Plank"
+    },
+
+    "Reverse Lunges": {
+      title: "🚶 Reverse Lunges",
+      how: "Ek leg ko peeche le jao aur dono knees ko comfortably bend karo, phir starting position me wapas aao.",
+      sets: "Comfortable repetitions",
+      rest: "Har set ke baad rest lo.",
+      mistakes: "Balance lose ho raha ho to movement ko easier karo.",
+      easier: "Supported Reverse Lunge"
+    },
+
+    "Glute Bridge": {
+      title: "🦵 Glute Bridge",
+      how: "Peeth ke bal letkar knees bend karo aur hips ko comfortably upar lift karo.",
+      sets: "Comfortable sets",
+      rest: "Sets ke beech rest lo.",
+      mistakes: "Movement ko slow aur controlled rakho.",
+      easier: "Smaller range of movement"
+    },
+
+    "Bird Dog": {
+      title: "🧘 Bird Dog",
+      how: "Hands aur knees par aakar opposite arm aur leg ko controlled way me extend karo.",
+      sets: "Controlled repetitions",
+      rest: "Zarurat ke according rest lo.",
+      mistakes: "Back ko unnecessarily arch mat karo.",
+      easier: "Sirf arm ya sirf leg movement"
+    },
+
+    "Wall Push-ups": {
+      title: "🏋️ Wall Push-ups",
+      how: "Wall se comfortable distance par khade hokar hands wall par rakho aur controlled push-up movement karo.",
+      sets: "Comfortable repetitions",
+      rest: "Sets ke beech rest lo.",
+      mistakes: "Movement ko controlled rakho.",
+      easier: "Wall ke closer position se start karo"
+    }
+
+  };
+
+  const exercise = exercises[name];
+
+  if (!exercise) return;
+
+  details.innerHTML = `
+    <h3>${exercise.title}</h3>
+    <p><strong>📌 How to:</strong> ${exercise.how}</p>
+    <p><strong>🔢 Sets:</strong> ${exercise.sets}</p>
+    <p><strong>⏱️ Rest:</strong> ${exercise.rest}</p>
+    <p><strong>⚠️ Common mistake:</strong> ${exercise.mistakes}</p>
+    <p><strong>🔄 Easier option:</strong> ${exercise.easier}</p>
+  `;
+
+  details.style.display = "block";
+
+  details.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+  }
 
 </script>
 
