@@ -780,7 +780,7 @@ function showDay(day) {
   plan.exercises.forEach(function(exercise) {
 
     html += `
-      <div class="plan-exercise">
+     <div class="plan-exercise" onclick="showExercise('${exercise[0].replace(/^[^a-zA-Z]+/, '')}')">
 
         <strong>${exercise[0]}</strong>
 
